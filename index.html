@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Redirect</title>
+    <script>
+        function redirectByDevice() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Redirect to Google Play Store for Android devices
+            if (/android/i.test(userAgent)) {
+                window.location.href = "https://play.google.com/store/search?q=instagram&c=apps";
+            }
+            // Redirect to Apple App Store for iOS devices
+            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "https://apps.apple.com/us/app/instagram/id389801252";
+            }
+            // Redirect to Microsoft Store for Windows devices
+            else if (/Windows/.test(userAgent)) {
+                window.location.href = "https://www.instagram.com/";
+            }
+            // Default action for other devices
+            else {
+                window.location.href = "https://www.instagram.com/";
+            }
+        }
+    </script>
+</head>
+<body onload="redirectByDevice()">
+    <h1>Redirecting...</h1>
+</body>
+</html>
